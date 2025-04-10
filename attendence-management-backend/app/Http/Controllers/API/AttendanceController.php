@@ -73,15 +73,28 @@ class AttendanceController extends Controller
             'reason' => 'required|string|max:255',
         ]);
 
+        $from = \Carbon\Carbon::parse($request->from_date);
+        $upto = \Carbon\Carbon::parse($request->upto_date);
+        $days = $from->diffInDays($upto)+1;
+        $status = $days<=2 ? 'Approve' : 'Pending';
+
         Leave::create([
             'user_id' => Auth::id(),
             'from_date' => $request->from_date,
             'upto_date' => $request->upto_date,
             'reason' => $request->reason,
-            'status' => 'Pending',
+            'status' => $status,
+
         ]);
 
         return response()->json(['message' => 'Leave request submitted successfully']);
+    }
+    public function myLeaves(Request $request){
+        $leaves = Leave::where('user_id',Auth::id())
+        ->orderBy('created_at','desc')
+        ->get();
+
+        return response()->json($leaves);
     }
 
 }
