@@ -2,7 +2,8 @@
 <div>
   <div class="max-w-3xl mx-auto mt-10">
     <h1 class="text-2xl font-bold mb-6 text-center">List of Leaves</h1>
-    <table class="w-full border border-collapse mt-4 shadow-md">
+    <div v-if="leaves.length===0">Leaves list not found</div>
+    <table v-else class="w-full border border-collapse mt-4 shadow-md">
       <thead>
         <tr class="bg-gray">
           <th class="border px-5 py-4">From Date</th>
