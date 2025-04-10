@@ -10,6 +10,7 @@
           <th class="border px-5 py-4">Upto Date</th>
           <th class="border px-5 py-4">Reason</th>
           <th class="border px-5 py-4">Status</th>
+          <th class="border px-5 py-4">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,12 @@
           <td class="border px-4 py-2">
             <span :class="statusClass(leave.status)">
               {{ leave.status }}
+            </span>
+          </td>
+          <td class="border px-4 py-2">
+            <span :class="statusClass(leave.status)">
+              <button class="btn btn-danger text-white px-3 py-1 rounded" v-if="leave.status==='Pending' || leave.status==='Approve'" @click="cancelLeave(leave.id)"> Cancel
+              </button>
             </span>
           </td>
         </tr>
@@ -36,7 +43,7 @@ export default {
   name: 'MyLeaves',
   data() {
     return {
-      leaves: [],     
+      leaves: [],
     }
   },
   mounted() {
@@ -54,7 +61,21 @@ export default {
         this.leaves = response.data;
       } catch (error) {
         alert('Error in fetching the leaves ', error);
-      } 
+      }
+    },
+    async cancelLeave(id) {
+      try {
+        const token = localStorage.getItem('token');
+        await axios.put(`/leaves/cancel/${id}`, null, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        this.fetchLeaves();
+      } catch (error) {
+        alert("Error in cancelling the leave");
+        console.error(error);
+      }
     },
     statusClass(status) {
       return {
