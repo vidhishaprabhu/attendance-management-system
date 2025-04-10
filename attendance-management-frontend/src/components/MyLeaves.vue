@@ -20,12 +20,12 @@
           <td class="border px-5 py-4">{{leave.upto_date}}</td>
           <td class="border px-5 py-4">{{leave.reason}}</td>
           <td class="border px-4 py-2">
-            <span :class="statusClass(leave.status)">
+            <span :class="badgeClass(leave.status)">
               {{ leave.status }}
             </span>
           </td>
           <td class="border px-4 py-2">
-            <span :class="statusClass(leave.status)">
+            <span :class="badgeClass(leave.status)">
               <button class="btn btn-danger text-white px-3 py-1 rounded" v-if="leave.status==='Pending' || leave.status==='Approve'" @click="cancelLeave(leave.id)"> Cancel
               </button>
             </span>
@@ -82,11 +82,11 @@ export default {
         console.error(error);
       }
     },
-    statusClass(status) {
+    badgeClass(status) {
       return {
-        'text-green-600 font-semibold': status === 'Approved',
-        'text-yellow-600 font-semibold': status === 'Pending',
-        'text-red-600 font-semibold': status === 'Cancelled',
+        'bg-success bg-opacity-25 text-success px-3 py-1 rounded-pill small fw-medium': status === 'Approved',
+        'bg-warning bg-opacity-25 text-warning px-3 py-1 rounded-pill small fw-semibold': status === 'Pending',
+        'bg-secondary bg-opacity-25 text-dark px-3 py-1 rounded-pill small fw-semibold': status === 'Cancelled',
       };
     },
 
