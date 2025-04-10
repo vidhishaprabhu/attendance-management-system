@@ -76,7 +76,7 @@ class AttendanceController extends Controller
         $from = \Carbon\Carbon::parse($request->from_date);
         $upto = \Carbon\Carbon::parse($request->upto_date);
         $days = $from->diffInDays($upto)+1;
-        $status = $days<=2 ? 'Approve' : 'Pending';
+        $status = $days<=2 ? 'Approved' : 'Pending';
 
         Leave::create([
             'user_id' => Auth::id(),
@@ -96,5 +96,14 @@ class AttendanceController extends Controller
 
         return response()->json($leaves);
     }
+    public function cancelLeave($id){
+        $leaves=Leave::find($id);
+        if(!$leaves || $leaves->user_id != Auth::id()){
+            return response()->json(['message'=>'Leaves not found']);
+        }
+        $leaves->status="Cancelled";
+        $leaves->save();
+        return response()->json(["message"=>'Leave Cancelled successfully']);
 
+    }
 }
