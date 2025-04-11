@@ -33,4 +33,7 @@ Route::post('/attendances',[AttendanceController::class,'store'])->middleware('a
 Route::get('/export-attendance', [AttendanceController::class, 'exportMonthlyReport'])->middleware('auth:sanctum');
 Route::post('/attendance/export-pdf', [AttendanceController::class, 'exportAttendance'])->middleware('auth:sanctum');
 Route::post('apply', [AttendanceController::class, 'applyLeave'])->middleware('auth:sanctum');
-Route::get('leaves',[AttendanceController::class,'myLeaves'])->middleware('auth:sanctum');
+Route::get('/leaves',[AttendanceController::class,'myLeaves'])->middleware('auth:sanctum');
+Route::put('/leaves/cancel/{id}',[AttendanceController::class,'cancelLeave'])->middleware('auth:sanctum');
+Route::post('/leave/export-pdf', [AttendanceController::class, 'exportLeave'])->middleware('auth:sanctum');
+Route::get('/leaves/filter', [AttendanceController::class, 'filterLeaves'])->middleware('auth:sanctum');
