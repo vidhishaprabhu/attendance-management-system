@@ -65,6 +65,23 @@ class AttendanceController extends Controller
         $pdf = Pdf::loadView('attendance.report', ['attendances' => $attendances]);
         return $pdf->download("attendance_{$month}_{$year}.pdf");
     }
+    public function exportLeave(Request $request)
+    {
+        $user=auth()->user();
+        if(!$user){
+            return response()->json(['message'=>'Unauthenticated',401]);
+        }
+        $month = $request->query('month');
+        $year  = $request->query('year');
+        $leaves = Leave::where('user_id',$user->id)
+        ->whereYear('from_date',$year)
+        ->whereMonth('from_date',$month)
+        ->orderBy('from_date')
+        ->get();
+
+        $pdf = Pdf::loadView('leave.report', ['leaves' => $leaves]);
+        return $pdf->download("leaves_{$month}_{$year}.pdf");
+    }
     public function applyLeave(Request $request)
     {
         $request->validate([
@@ -106,4 +123,25 @@ class AttendanceController extends Controller
         return response()->json(["message"=>'Leave Cancelled successfully']);
 
     }
+    public function filterLeaves(Request $request){
+        $user = auth()->user();
+    
+        if(!$user){
+            return response()->json(['message'=>'Unauthenticated'], 401);
+        }
+    
+        $query = Leave::where('user_id', $user->id);
+    
+        if($request->has('status') && in_array($request->status, ['Pending', 'Approved', 'Cancelled'])){
+            $query->where('status', $request->status);
+        }
+        if($request->has('from_date') && $request->has('upto_date')){
+            $query->whereBetween('from_date', [$request->from_date, $request->upto_date]);
+        }
+    
+        $leaves = $query->orderBy('from_date', 'desc')->get();
+    
+        return response()->json($leaves);
+    }
+    
 }
