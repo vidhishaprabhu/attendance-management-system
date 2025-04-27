@@ -10,6 +10,17 @@
 
 ![Login Page](src/screenshots/Login.png)
 
+# Attendance Dashboard
+
+![Attendance Dashboard](src/screenshots/attendance-dashboard.png)
+
+# Apply Leave
+
+![Apply Leave](src/screenshots//apply-leave.png)
+
+# List Of Leaves
+
+![List of Leaves](src/screenshots/listofleaves.png)
 
 
 ## Project setup
