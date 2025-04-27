@@ -2,7 +2,7 @@
 
 # Screenshots
 
-Login Page
+                  Login Page
 
 ![Register Page](src/screenshots/Register.png)
 
