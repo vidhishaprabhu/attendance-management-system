@@ -10,7 +10,7 @@ Finally, the application includes a Logout button, allowing users to securely lo
 
 # App-features
 
-1) Mark attendance only once per day: Users are allowed to mark their attendance just once in a single day, ensuring data consistency.
+1) Mark attendance only once per day. Users are allowed to mark their attendance just once in a single day, ensuring data consistency.
 
 2) Download monthly attendance reports: Users can download their monthly attendance reports in both PDF and Excel formats.
 
