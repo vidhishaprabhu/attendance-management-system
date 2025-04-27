@@ -1,4 +1,4 @@
-# attendance-management-system
+# Attendance-Management-System
 
 # Screenshot of Project Flow is present in the readme of attendance-management-frontend
 
