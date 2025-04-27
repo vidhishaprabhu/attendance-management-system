@@ -2,6 +2,8 @@
 
 # Screenshots
 
+# Register Page
+
 ![Register Page](src/screenshots/Register.png)
 
 ## Project setup
