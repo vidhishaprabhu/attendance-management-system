@@ -2,8 +2,6 @@
 
 # Screenshot of Project Flow is present in the readme of attendance-management-frontend
 
-# Attendance-management-frontend
-
 Attendance Management Frontend is a powerful application designed to efficiently manage attendance. Users can mark their attendance, and the system ensures that the same user cannot mark attendance more than once on the same day. The attendance status can be either "Present" or "Absent." Additionally, users have the option to download a monthly attendance report in both PDF and Excel formats. The application also provides a feature to view the attendance history that has been marked by the user.
 
 Moreover, users can apply for leave by filling out a form that includes input fields for "From Date," "Upto Date," and a text area for entering the reason for absence. Users can view the list of leaves they have applied for, with each entry displaying the status, from date, and up-to-date. A form is provided with two buttons: Filter and Clear. The Filter button displays leave data based on the filtered from-date and up-to-date, while the Clear button clears both the displayed data and any form data entered by the user. Users also have the option to download the leave report in PDF format.
