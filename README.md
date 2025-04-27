@@ -2,7 +2,7 @@
 
 # Register Page
 
-![Register Page](crm-frontend/src/screenshots/Register.png)
+![Register Page](attendance-management-frontend/src/assets/Register.png)
 
 # Login Page
 
