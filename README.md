@@ -1,5 +1,7 @@
 # attendance-management-system
 
+# Readme of entire is present in readme of attendance-management-frontend
+
 # Register Page
 
 ![Register Page](attendance-management-frontend/src/assets/Register.png)
