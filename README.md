@@ -2,7 +2,7 @@
 
 # Register Page
 
-![Register Page](src/screenshots/Register.png)
+![Register Page](crm-frontend/src/screenshots/Register.png)
 
 # Login Page
 
