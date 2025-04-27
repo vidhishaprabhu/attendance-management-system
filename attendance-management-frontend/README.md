@@ -1,5 +1,9 @@
 # attendance-management-frontend
 
+# Screenshots
+
+![Register Page](src/screenshots/Register.png)
+
 ## Project setup
 ```
 npm install
