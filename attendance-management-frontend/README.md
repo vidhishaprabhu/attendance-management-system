@@ -1,6 +1,6 @@
 # attendance-management-frontend
 
-# Screenshots
+# Screenshots(Flow and demo of working of attendance-management-system project)
 
 # Register Page
 
